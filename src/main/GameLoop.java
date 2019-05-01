@@ -7,6 +7,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import stages.Duengon;
 import stages.Enemy;
 import stages.Sprite;
 import stages.Stage1;
@@ -44,6 +45,7 @@ class GameLoop extends AnimationTimer {
 	private int bufferScalarX = 1;
 	private int bufferScalarY = 1;
 	private boolean isBattle = false;
+	private boolean dflag = false;
 	private GraphicsContext gc;
 	private PlayerChar e;
 
@@ -71,8 +73,9 @@ class GameLoop extends AnimationTimer {
 	}
 
 	public void handle(long currentNanoTime) { // code of start, handle called by .start()
+		
 		if (!isBattle) {
-			// System.out.println("y = " + e.totalPosY + " x = " + e.totalPosX );
+			 System.out.println("y = " + e.totalPosY + " x = " + e.totalPosX );
 			if (e.totalPosX < 720) { // Stage 1-1 (Going Left and Right)
 				bufferScalarX = 0;
 				bufferScalarY = 0;
@@ -166,23 +169,23 @@ class GameLoop extends AnimationTimer {
 				obstacles = s9.getObstacles();
 			}
 
-		}
 		// Code for Out of Bounds Checking
 
-		if (e.posY < 0) { // Out of Bounds TOP
+		if (e.posY < 0 && dflag == false) { // Out of Bounds TOP
 			e.totalPosY = 0;
 		}
-		if (e.totalPosX < 0) { // Out of Bounds LEFT
+		if (e.totalPosX < 0 && dflag == false) { // Out of Bounds LEFT
 			e.totalPosX = 0;
 		}
-		if (e.totalPosX > 2120) { // Out of Bounds RIGHT
+		if (e.totalPosX > 2120 && dflag == false) { // Out of Bounds RIGHT
 			e.posX = 680;
 			e.totalPosX = 2120;
 		}
-		if (e.totalPosY > 1380) { // Out of Bounds DOWN
+		if (e.totalPosY > 1380 && dflag == false) { // Out of Bounds DOWN
 			e.posY = 420;
 			e.totalPosY = 1380;
 		}
+		
 
 		// Code for Animating the Player Char on Screen
 		of(Direction.cachedValues).filter(v -> input.contains(v.name())).findFirst().ifPresent(dir -> {
@@ -298,7 +301,7 @@ class GameLoop extends AnimationTimer {
 		pickUpItem();
 
 		gc.fillText("HP: " + Integer.toString(e.getHealth()), 20, 20);
-		gc.fillText("AMMO: UNLIMITED ", 20, 40);
+		gc.fillText("AMMO: UNLIMITED ", 20, 40);}
 	
 
 	}

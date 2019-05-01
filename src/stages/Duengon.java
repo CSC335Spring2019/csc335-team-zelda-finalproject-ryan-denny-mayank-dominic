@@ -7,14 +7,8 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class Stage1 {
+public class Duengon {
 	private ArrayList<Rectangle> obstalces = new ArrayList<Rectangle>() ;
-	private ArrayList<Sprite> items = new ArrayList<Sprite>() ;
-	private ArrayList<Enemy> enemies = new ArrayList<Enemy>() ;
-
-
-	Image pokeball = new Image("file:images/pokeball.png");
-	
 
 	int[][] tileMap = {
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -30,63 +24,46 @@ public class Stage1 {
 	}; //tileMap - may move on to text reading method instead
 
 	Image regTile = new Image("file:images/reg_tile_scaled.png");
-	Image grassTile = new Image("file:images/reg_tile_scaled.png");
 	Image flowerTile = new Image("file:images/grass-tile2.png");
-	Image paveTile = new Image("file:images/pavement.png");
+	Image rockTile = new Image("file:images/rock.png");
+	Image Tree = new Image("file:images/tree1.png");
+	
 
 	int tileLength = 48;
 	int tileWidth = 48;
 
-
 	public void generateTiles(GraphicsContext gc) {
-		Sprite pokeballS = new Sprite();
-		pokeballS.setImage(pokeball);
-		double px = 350 * Math.random() + 50;
-		double py = 350 * Math.random() + 50;
-		pokeballS.setPosition(300,300);
-		items.add( pokeballS );
-
-		Enemy enemy = new Enemy();
-		enemy.direction = 1;
-		enemy.setVelocity(10, 10);
-		enemies.add( enemy );
-		
 
 		int mapLength = tileMap.length;
 		int mapWidth = tileMap[0].length;
-
-
+		gc.setFill(Color.YELLOW);
+		
 		for (int i = 0; i < mapLength; i++) { 
 			for (int j = 0; j < mapWidth; j++) {
-				gc.fillRect(j * tileLength, i * tileWidth, 48, 48);
+				
+	
+				
+				
 			
 				if (tileMap[i][j] == 0) {
 					gc.drawImage(regTile, j * tileWidth, i * tileLength);
 				}
-				if (tileMap[i][j] == 1) {
-					gc.setFill(Color.RED);
-					gc.fillRect(j * tileLength, i * tileWidth, tileLength, tileWidth);
-					obstalces.add( new Rectangle(j * tileLength, i * tileWidth, tileLength, tileWidth));
-
-				}
-				if (tileMap[i][j] == 7) {
-	
-				}
-			}
-		}
+//				if (tileMap[i][j] == 1) {
+//					gc.drawImage(regTile, j * tileWidth, i * tileLength);
+//					gc.drawImage(rockTile, j * tileWidth, i * tileLength);
+//					obstalces.add( new Rectangle(j * tileLength, i * tileWidth, tileLength, tileWidth));
+//				}
+//				if (tileMap[i][j] == 7) {
+//					gc.drawImage(regTile, j * tileWidth, i * tileLength);
+//					gc.drawImage(Tree, j * tileWidth, i * tileLength);
+//					obstalces.add( new Rectangle(j * tileLength, i * tileWidth, tileLength, tileWidth));
+//					
+//				}
+//			}
+		}}
 	}
 	public ArrayList<Rectangle> getObstacles(){
 		return obstalces;
 	}
-	public ArrayList<Sprite> getItems() {
-		// TODO Auto-generated method stub
-		return items;
-	}
-	public ArrayList<Enemy> getEnemies() {
-		// TODO Auto-generated method stub
-		return enemies;
-	}
-	
-	
 
-	}
+}

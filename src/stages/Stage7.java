@@ -20,7 +20,7 @@ public class Stage7 {
 			{0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 1},
 			{0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 			{0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 1},
-			{2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 	}; //tileMap - may move on to text reading method instead
 
 	Image regTile = new Image("file:images/oceantile.png");
@@ -48,11 +48,6 @@ public class Stage7 {
 					gc.drawImage(cactusTile, j * tileWidth, i * tileLength);
 					obstalces.add( new Rectangle(j * tileLength, i * tileWidth, tileLength, tileWidth));
 				
-				}
-				if (tileMap[i][j] == 2) {
-					gc.drawImage(regTile, j * tileWidth, i * tileLength);
-					gc.drawImage(caveTile, j * tileWidth, i * tileLength);
-					obstalces.add( new Rectangle(j * tileLength, i * tileWidth, tileLength, tileWidth));
 				}
 				if (tileMap[i][j] == 7) {
 					gc.drawImage(regTile, j * tileWidth, i * tileLength);

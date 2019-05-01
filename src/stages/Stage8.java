@@ -18,8 +18,8 @@ public class Stage8 {
 			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1},
 			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1},
 			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1},
-			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 	}; //tileMap - may move on to text reading method instead
 
 	Image regTile = new Image("file:images/oceantile.png");
@@ -47,6 +47,9 @@ public class Stage8 {
 					obstalces.add( new Rectangle(j * tileLength, i * tileWidth, tileLength, tileWidth));
 				}
 				if (tileMap[i][j] == 7) {
+					gc.setStroke(Color.BLACK);
+					gc.fillRect(j * tileLength, i * tileWidth, tileLength, tileWidth);
+					
 				}
 			}
 		}
